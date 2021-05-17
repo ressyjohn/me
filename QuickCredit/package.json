@@ -1,0 +1,64 @@
+{
+  "name": "quickcredit",
+  "version": "1.0.0",
+  "description": "An online lending platform that provides short term soft loans to individuals",
+  "main": "app.js",
+  "scripts": {
+    "build": "npm run clean && npm run build-babel",
+    "build-babel": "babel ./server/src -d build",
+    "clean": "rm -rf build .nyc_output coverage && mkdir build",
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
+    "db:migrate": "set DEBUG=DB_MIGRATE && babel-node ./server/src/database/migrations",
+    "db:seed": "set DEBUG=DB_SEEDING && babel-node ./server/src/database/seeds",
+    "docs": "aglio --theme-variables slate -i apiary.apib -o ./server/docs/quickcredit-docs.html",
+    "start": "npm run build && node ./build/app.js",
+    "start:dev": "set DEBUG=http && cross-env NODE_ENV=dev babel-watch ./server/src/app.js",
+    "start:migrate": "cross-env NODE_ENV=dev npm run db:migrate",
+    "start:seed": "cross-env NODE_ENV=dev npm run db:seed",
+    "test": "cross-env-shell NODE_ENV=test \"npm run db:seed && nyc mocha ./server/test/* -r @babel/register -r @babel/polyfill --exit\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meetKazuki/QuickCredit.git"
+  },
+  "author": "Desmond Edem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meetKazuki/QuickCredit/issues"
+  },
+  "homepage": "https://github.com/meetKazuki/QuickCredit#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "babel-watch": "^7.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.3",
+    "cross-env": "^5.2.0",
+    "editorconfig": "^0.15.3",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^7.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0",
+    "uuid": "^3.3.2"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}

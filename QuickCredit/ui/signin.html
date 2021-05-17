@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="https://user-images.githubusercontent.com/12225152/56736847-1860da80-6761-11e9-88ad-438900d86a9e.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>QuickCredit &mdash; Sign In</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/signup.css">
+</head>
+<body>
+  <header>
+    <a href="./">
+      <img src="https://user-images.githubusercontent.com/12225152/57765850-2bcaea00-76fe-11e9-8d2a-0871c4a5980c.png"alt="logo" class="logo">
+    </a>
+  </header>
+
+  <main>
+    <h2 class="section-title">Continue to QuickCredit</h2>
+    <section class="container">
+      <form class="form-container" method="POST" id="form">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" class="form-element" id="email" placeholder="Your Email Address" required>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-element" id="password" placeholder="Your Password" required>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </form>
+
+      <p>
+        New to QuickCredit? <span><a href="signup.html">Create an account</a></span>
+      </p>
+    </section>
+
+    <div class="spinner-dots">
+      <div class="spinner-dot"></div>
+      <div class="spinner-dot"></div>
+    </div>
+  </main>
+</body>
+<script src="assets/js/authenticateUser.js"></script>
+</html>

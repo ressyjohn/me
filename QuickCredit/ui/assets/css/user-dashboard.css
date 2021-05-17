@@ -1,0 +1,320 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css?family=Biryani|Carter+One|Hind+Siliguri|Nunito');
+
+body {
+  background-color: #ebf2fa;
+  display: grid;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  grid-template-areas:
+    "aside .... header"
+    "aside main main"
+    "aside main main";
+  grid-gap: 0px 25px;
+  grid-template-columns: 25% 1fr;
+  grid-template-rows: 55px 1fr;
+  min-height: 100vh;
+  width: 100%;
+}
+h1 {
+  font-family: 'Carter One', cursive;
+}
+h2 {
+  font-family: 'Hind Siliguri', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+aside,
+header,
+main {
+  display: flex;
+}
+table {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+td, th {
+  padding: 1rem;
+  text-align: left;
+}
+th {
+  font-weight: bold;
+}
+/* tr:nth-child(odd) {
+  background-color: #ffffff;
+} */
+td {
+  min-width: 60px;
+}
+
+/** *** Aside Menu Styles *** **/
+
+aside {
+  background-color: #0A122A;
+  flex-direction: column;
+  grid-area: aside;
+}
+aside .asidebar-logo {
+  align-self: center;
+  margin-top: 3vh;
+  padding: 3px;
+  width: 18vw;
+}
+.asidebar-logo img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+aside nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
+}
+aside nav a {
+  color: #fffffa;
+  font-weight: 400;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  /* transition: all 0.3s ease-in-out; */
+}
+aside nav a.active {
+  background: #1D3461;
+  border-left: 4px solid #fffffa;
+  padding: 15px 30px 15px 25px;
+}
+aside nav a:hover {
+  background: #427AA1;
+  padding: 15px 30px 15px 25px;
+}
+aside nav a .fas {
+  color: #F06543;
+  font-size: 1.3rem;
+  margin-right: 0.8rem;
+}
+
+/** *** Header Menu Styles *** **/
+
+header {
+  align-items: center;
+  grid-area: header;
+  min-height: 7vh;
+  justify-content: flex-end;
+}
+.hamburger-menu {
+  display: none;
+}
+header nav {
+  margin: 0.3rem;
+  padding: 0.5rem;
+}
+header nav a {
+  color: #427AA1;
+  font-size: 1.3rem;
+  padding: 5px;
+  transition: all 0.3s ease-in-out;
+}
+header nav a:hover {
+  color: #0A122A;
+}
+
+/** *** Main Styles *** **/
+
+main {
+  flex-direction: column;
+  grid-area: main;
+}
+.container {
+  background: #ebf2fa;
+  min-height: 80vh;
+  padding: 0px 45px;
+  position: relative;
+}
+.section-title {
+  color: #1D3461;
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  position: relative;
+}
+.section-title:after {
+  border: 1.5px solid #F06543;
+  bottom: -3px;
+  content: "";
+  left: 0;
+  position: absolute;
+  width: 60px;
+}
+/** Profile Styles **/
+.profile {
+  display: flex;
+  justify-content: center;
+}
+.profile-card {
+  background: #fffffa;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
+  padding: 20px;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+/* .profile-card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+} */
+.profile-card p {
+  margin: 0.3rem;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+.profile-image {
+  align-self: center;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  height: 100px;
+  width: 100px;
+}
+.loan-reports {
+  margin-top: 1.3rem;
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+  /* base styles */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* aside menu */
+  .asidebar-logo {
+    display: none;
+  }
+  aside nav {
+    display: none;
+    background: #151b3a;
+    top: 50px;
+    overflow: hidden;
+    position: absolute;
+    transition: all 250ms ease-in-out;
+    width: 100%;
+    z-index: 10000;
+  }
+  aside nav.menu-open {
+    display: flex;
+    flex-direction: column;
+  }
+  aside nav a.active {
+    border: none;
+  }
+  .hamburger-menu {
+    background: transparent;
+    border: 0;
+    display: block;
+    padding: 37px;
+    position: absolute;
+    left: 0;
+    top: -10px;
+  }
+  .hamburger-menu.menu-open > .hamburger {
+    background: transparent;
+  }
+  .hamburger-menu.menu-open > .hamburger:after,
+  .hamburger-menu.menu-open > .hamburger:before {
+    top: 0;
+    width: 30px;
+  }
+  .hamburger-menu.menu-open > .hamburger:after {
+    transform: rotate(-45deg);
+  }
+  .hamburger-menu.menu-open > .hamburger:before {
+    transform: rotate(45deg);
+  }
+  .hamburger {
+    background: #0a122a;
+    display: block;
+    height: 2px;
+    position: absolute;
+    right: 20px;
+    top: 36px;
+    width: 30px;
+  }
+  .hamburger:before {
+    top: 7px;
+  }
+  .hamburger:after {
+    bottom: 7px;
+  }
+  .hamburger:before,
+  .hamburger:after {
+    background: #0a122a;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    right: 0px;
+    transition: all 250ms ease-in;
+    width: 30px;
+  }
+
+
+  /* Header styles */
+  header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+  }
+
+
+  /* Main styles */
+  .container {
+    width: 80%;
+  }
+  .profile-card {
+    flex-basis: 100%;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    border: 1px solid #ccc;
+    padding: 0;
+  }
+  td {
+    border: none;
+    border-bottom: 1px solid #eeeeee;
+    position: relative;
+    padding-left: 50%;
+  }
+  td:before {
+    font-weight: bolder;
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  /* td:nth-of-type(1):before { content: "S/N"; } */
+  td:nth-of-type(1):before { content: "Date Created"; }
+  td:nth-of-type(2):before { content: "Amount"; }
+  td:nth-of-type(3):before { content: "Interest"; }
+  td:nth-of-type(4):before { content: "Tenor"; }
+  td:nth-of-type(5):before { content: "Installment"; }
+  td:nth-of-type(6):before { content: "Balance"; }
+  td:nth-of-type(7):before { content: "Status"; }
+  td:nth-of-type(8):before { content: "Repaid"; }
+}
